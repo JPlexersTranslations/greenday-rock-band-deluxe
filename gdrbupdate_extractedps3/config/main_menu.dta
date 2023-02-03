@@ -1,0 +1,64 @@
+(proj9_menu
+   (quickplay
+      (band_quickplay qp_local qp_online)
+      (score_duel
+         local_multi_scoreduel
+         player_match_scoreduel
+         #ifdef HX_XBOX
+         (ranked_match_scoreduel easy medium hard expert)
+         #endif))
+   (story story_local story_online)
+   ((training popup)
+      tutorials
+      practice_mode
+      (drum_trainer drum_trainer_beats drum_trainer_band_drummer drum_trainer_freestyle))
+   ((options popup)
+      #ifndef HX_PS3
+      gameplay
+      #endif
+      global_options
+      av_settings
+      options_managedata
+      calibration)
+   ((extras popup)
+      (leaderboards
+         lb_solo
+         lb_band
+         lb_challenges
+         #ifndef HX_PS3
+         lb_score_duel
+         #endif)
+      accomplishments
+      credits
+      #ifdef HX_PS3
+      check_invites
+      #endif
+      #ifdef HX_XBOX
+      party_options
+      #endif
+      song_export)
+   ((patch popup)
+      patch_info_button
+	  patch_new_button
+     (patch_buttons_1
+	  patch_autoplay_button
+	  patch_60fps_button
+	  patch_whammy_button
+	  patch_venue_button
+	  patch_fills_button
+	  patch_menu_mute_button
+	  patch_od_button)
+	 (patch_buttons_2
+	  patch_ASMR_button
+	  patch_free_cam_button
+	  patch_dop_button
+	  patch_pp_button
+	  patch_true_performance_button)
+	 (patch_game_speed
+	  patch_double_speed_button
+	  patch_one_seventy_five_speed_button
+	  patch_one_half_speed_button
+	  patch_one_quarter_speed_button
+	  patch_seventy_five_speed_button
+	  patch_half_speed_button
+	  patch_quarter_speed_button)))
