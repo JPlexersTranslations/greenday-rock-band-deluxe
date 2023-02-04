@@ -2,7 +2,7 @@ git pull https://github.com/hmxmilohax/greenday-rock-band-deluxe main
 @echo OFF
 echo:Make sure your vanilla ark files are in _build/Xbox/gen/
 del "%~dp0\_build\Xbox\gen\main_xbox.hdr"
-del "%~dp0\_build\Xbox\gen\main_xbox_11.ark"
+del "%~dp0\_build\Xbox\gen\main_xbox_10.ark"
 xcopy "%~dp0\_build\_rebuild_files\main_xbox.hdr" "%~dp0\_build\Xbox\gen" >nul
 echo:
 echo:Temporarily moving PS3 files out of the ark path to reduce final ARK size
@@ -21,5 +21,5 @@ echo:Moving back PS3 files
 rd _temp
 echo:Wrote Green Day Rock Band Deluxe patch arks.
 echo:Complete. Launching Xenia. Enjoy Green Day Rock Band Deluxe
-"%~dp0\_xenia\xenia_canary" "%~dp0\_build\xbox\default.xex"
+"%~dp0_xenia\xenia_canary" "%~dp0_build\Xbox\default.xex"
 pause
