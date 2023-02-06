@@ -1,5 +1,5 @@
 set FAILED_ARK_BUILD=0
-git pull https://github.com/hmxmilohax/rock-band-2-deluxe main
+git pull https://github.com/hmxmilohax/greenday-rock-band-deluxe main
 @echo off
 echo:
 echo:Temporarily moving Xbox files out of the ark path to reduce final ARK size
