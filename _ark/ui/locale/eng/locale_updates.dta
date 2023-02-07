@@ -1,0 +1,16 @@
+(milosliderlbl
+   "Speed / Framerate")
+(speed_msg
+   "SONG SPEED: %d%%")
+(trackspeed_msg
+   "NOTE SPEED: %d%%")
+(fps_msg
+   "VENUE FPS: %dFPS")
+(choke_solo 
+   "Awesome Choke!")
+(nice_solo
+   "Nice")
+(os_dxsettings "DELUXE SETTINGS")
+(os_spd "Speed Modifiers")
+(os_gp "Gameplay Modifiers")
+(os_vis "Visual Modifiers")

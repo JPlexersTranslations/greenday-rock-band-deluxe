@@ -54,6 +54,10 @@
          set_showing
          TRUE}
       {meta_performer disband_if_bad_configuration}
+	  {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+      {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
+	  {set $drum_groove_active FALSE}
+	  {set $guitar_groove_active FALSE}
       {script_task
          kTaskSeconds
          (delay
@@ -72,12 +76,26 @@
             {handle
                ($this intro_end)})}
       kDataUnhandled)
+   ; (intro_end
+      ; {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+      ; {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
+	  ; {set $drum_groove_active FALSE}
+	  ; {set $guitar_groove_active FALSE}
+	; kDataUnhandled)
    (intro_skip
+      {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+      {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
+	  {set $drum_groove_active FALSE}
+	  {set $guitar_groove_active FALSE}
       {{gamemode get game_screen}
          set_showing
          TRUE}
       kDataUnhandled)
    (music_start
+      {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+      {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
+	  {set $drum_groove_active FALSE}
+	  {set $guitar_groove_active FALSE}
       {ui music_start}
       kDataUnhandled)
    (beat
@@ -99,6 +117,11 @@
                      {elem $levels $ex})}}}}
       kDataUnhandled)
    (game_over
+	  {{{{gamemode get track_panel} find mtv_overlay} find fade.anim} set_frame 0} ;remove MTV overlay when track disappears, but only if it's already been restarted by script
+      {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+      {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
+	  {set $drum_groove_active FALSE}
+	  {set $guitar_groove_active FALSE}
       {stagekit_reset}
       {beatmatch
          foreach_active_player
@@ -161,6 +184,10 @@
                {beatmatch set_paused TRUE}})}
       kDataUnhandled)
    (game_outro
+	  {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+      {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
+	  {set $drum_groove_active FALSE}
+	  {set $guitar_groove_active FALSE}
       {$this game_outro_no_unhandled}
       kDataUnhandled)
    (game_outro_no_unhandled
@@ -255,204 +282,48 @@
             TRUE}
          FALSE})
    PAUSE_ON_MIC_DISCONNECT
+(milo_setup
+;send to network leaders song speed
+      ; {if {is_leader_local} {session send_msg_to_all {` (set $speedmod {, $leaderspeed}) kNetReliable}}}
+	  ; {if {is_leader_local} {set $speedmod $leaderspeed}}
+;send to network leaders static fills modifier
+	  ;{if {is_leader_local} {session send_msg_to_all {` (set $netstaticfills {, $leaderstaticfills}) kNetReliable}}}
+	  ;{session send_msg_to_all {` (set $tempstaticfills $leaderstaticfills) kNetReliable}}
+	  ;{session send_msg_to_all {` (if_else {! $netstaticfills} {modifier_mgr deactivate_modifier mod_staticfills} {modifier_mgr activate_modifier mod_staticfills}) kNetReliable}}
+;send to network leaders song title modifier
+	  ;{if {is_leader_local} {session send_msg_to_all {` (set $netsongtitle {, $leadersongtitle}) kNetReliable}}}
+	  ;{session send_msg_to_all {` (set $tempsongtitle $leadersongtitle) kNetReliable}}
+	  ;{session send_msg_to_all {` (if_else {! $netsongtitle} {modifier_mgr deactivate_modifier mod_songtitle} {modifier_mgr activate_modifier mod_songtitle}) kNetReliable}}
+;send to network leaders detailed song title modifier
+	  ;{if {is_leader_local} {session send_msg_to_all {` (set $netsongtitlestats {, $leadersongtitlestats}) kNetReliable}}}
+	  ;{session send_msg_to_all {` (set $tempsongtitlestats $leadersongtitlestats) kNetReliable}}
+	  ;{session send_msg_to_all {` (if_else {! $netsongtitlestats} {modifier_mgr deactivate_modifier mod_songtitlestats} {modifier_mgr activate_modifier mod_songtitlestats}) kNetReliable}}
+;send to network leaders black venue modifier
+	  ;{if {is_leader_local} {session send_msg_to_all {` (set $netblackvenue {, $leaderblackvenue}) kNetReliable}}}
+	  ;{session send_msg_to_all {` (set $tempblackvenue $leaderblackvenue) kNetReliable}}
+	  ;{session send_msg_to_all {` (if_else {! $netblackvenue} {modifier_mgr deactivate_modifier mod_blackvenue} {modifier_mgr activate_modifier mod_blackvenue}) kNetReliable}}
+;send to network leaders roygb modifier
+	  ;{if {is_leader_local} {session send_msg_to_all {` (set $netroygb {, $leaderroygb}) kNetReliable}}}
+	  ;{session send_msg_to_all {` (set $temproygb $leaderroygb) kNetReliable}}
+	  ;{session send_msg_to_all {` (if_else {! $netroygb} {modifier_mgr deactivate_modifier mod_roygb} {modifier_mgr activate_modifier mod_roygb}) kNetReliable}}
+;set up the FC indicator here
+      {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+	  {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
+	  {set $drum_groove_active FALSE} {set $guitar_groove_active FALSE} {set $bass_groove_active FALSE}
+;setup for venue fps
+	  {if {!= $emulatefps 24} {{$world iterate PostProc $p {$p set emulate_fps $emulatefps}}}
+	  {if {>= {$emulatefps 25} {$char iterate CharHair $hair {$hair reset 35}}
+	  {$world iterate WorldDir $wd {$wd iterate BandCamShot $bcs
+	  {foreach $property (shake_noisefreq shake_noiseamp) {$bcs set (keyframes $i $property) {'*' {$bcs get (keyframes $i $property)} 0.25}}}
+      {foreach $component (x y) {$bcs set (keyframes $i shake_maxangle $component) {'*' {$bcs get (keyframes $i shake_maxangle $component)} 0.25}}}}}}}}
+;set all players to autoplay if the modifier is active
+      ;{if {modifier_mgr is_modifier_active mod_auto_play}  {do {beatmatch foreach_active_player $player {$player set_auto_play enable}}}}
+;set for static drums
+      ;{unless {modifier_mgr is_modifier_active mod_staticfills} {gamemode set allow_drum_fills FALSE}}
+;set for freestyle drums
+      ;{if {modifier_mgr is_modifier_active mod_freestyledrums} {beatmatch set_fake_hit_gems_in_fill TRUE} {{beatmatch active_player 0} force_fill TRUE} {{beatmatch active_player 0} set_alternate_fill_mapping TRUE}}
+	  )
    (enter
-      {if_else
-	     {& patch_60fps_button}
-	     {patch_sett_adj}}
-      {if_else
-         {&
-            {profile_mgr get_voice_chat_volume}
-            2}
-         {$world
-            iterate
-            PostProc
-            $p
-            {$p set emulate_fps 60}}
-			{if_else
-		       {$world
-                  iterate
-                  PostProc
-                  $p
-                  {$p set emulate_fps 30}}}}
-	  {if_else
-	     {&
-		    {profile_mgr get_voice_chat_volume}
-			8}
-		 {thread_task
-            kTaskSeconds
-            (delay 0)
-			(script
-			   {$world
-                  iterate
-                  PostProc
-                  $p
-                  {$p set brightness -1000}})}
-		 {if_else
-			{$world
-			   iterate
-			   PostProc
-			   $p
-			   {$p set brightness 0}}}}		
-      {if_else
-	     {&
-		    {profile_mgr get_voice_chat_volume}
-			8}
-	  {if
-         $p9crowdaudio
-         {$p9crowdaudio stop_crowd_closeup}}}			
-	  {if_else
-	     {! {&
-            {profile_mgr get_voice_chat_volume}
-            16}}
-		 {toggle_no_drum_fills}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            512}
-		 {thread_task
-			kTaskSeconds
-			   (delay 0)
-			   (script
-	              {set_all_hud_showing}
-				  {foreach $setting
-				  (disable_guitar_fx
-				   crowd_reacts
-				   play_star_sfx
-				   play_track_intro_sfx
-				   has_instrument_fx
-				   play_song_end_sound)
-				   {gamemode set $setting FALSE}}
-				   {$task sleep 0}
-				   {$task loop})}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            1024}
-		 {do
-		    {thread_task
-			   kTaskBeats
-			   (script
-	              {if
-                     {game is_up}
-                     {change_speed 2.0}})}}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            2048}
-		 {do
-		    {thread_task
-			   kTaskBeats
-			   (script
-	              {if
-                     {game is_up}
-                     {change_speed 1.5}})}}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            4096}
-		 {do
-		    {thread_task
-			   kTaskBeats
-			   (script
-	              {if
-                     {game is_up}
-                     {change_speed 0.75}})}}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            8192}
-		 {do
-		    {thread_task
-			   kTaskBeats
-			   (script
-	              {if
-                     {game is_up}
-                     {change_speed 0.5}})}}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            16384}
-		 {do
-		    {thread_task
-			   kTaskBeats
-			   (script
-	              {if
-                     {game is_up}
-                     {change_speed 0.25}})}}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            32768}
-		 {do
-		    {thread_task
-			   kTaskBeats
-			   (script
-	              {if
-                     {game is_up}
-                     {change_speed 1.25}})}}}
-	  {if_else
-	     {&
-            {profile_mgr get_voice_chat_volume}
-            65536}
-		 {do
-		    {thread_task
-			   kTaskBeats
-			   (script
-	              {if
-                     {game is_up}
-                     {change_speed 1.75}})}}}
-	  {if_else
-	     {! {&
-            {profile_mgr get_voice_chat_volume}
-            131072}}
-	     {$world
-            iterate
-            WorldDir
-            $wd
-            {$wd
-               iterate
-               BandCamShot
-               $bcs
-			   {$bcs set use_depth_of_field FALSE}}}}
-	  {if
-	     $char
-		 {$char
-            iterate
-            CharHair
-            $hair
-            {$hair reset 37.5}}}
-	  {if
-         $world
-		 {$world
-            iterate
-            WorldDir
-            $wd
-            {$wd
-               iterate
-               BandCamShot
-               $bcs
-               {foreach
-                  $property
-                  (shake_noisefreq shake_noiseamp)
-                  {$bcs
-                     set
-                     (keyframes $i $property)
-                     {'*'
-                        {$bcs
-                        get
-                        (keyframes $i $property)}
-                     0.25}}}
-               {foreach
-                  $component
-                  (x y)
-                  {$bcs
-                     set
-                     (keyframes $i shake_maxangle $component)
-                     {'*'
-                        {$bcs
-                           get
-                           (keyframes $i shake_maxangle $component)}
-                        0.25}}}}}}
       {$this set_showing TRUE}
       {set
          [delayed_mic_check]
@@ -484,10 +355,14 @@
       {handle
          ($this my_enter)}
       {input_mgr set_limit kLimitSession}
+	  {$this milo_setup}
       {if
          [mic_removed_mid_setlist]
          {$this pause_for_mic}})
    (exit
+      {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
+      {set $bass_groove_active FALSE} {set $drum_groove_active FALSE} {set $guitar_groove_active FALSE}
+      {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
       {platform_mgr remove_sink $this ui_changed}
       {platform_mgr remove_sink $this microphones_changed}
       {synth stop_playback_all_mics}
