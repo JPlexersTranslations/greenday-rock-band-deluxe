@@ -51,7 +51,7 @@ Run the build script again to pull any new updates committed to the repo and reb
 
 ## Included Dependencies
 
-[Git for Windows](https://gitforwindows.org/) - CLI application to allow auto updating rb1dx repo files
+[Git for Windows](https://gitforwindows.org/) - CLI application to allow auto updating gdrbdx repo files
 
 [Dot Net 6.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime) - Needed to run ArkHelper
 
