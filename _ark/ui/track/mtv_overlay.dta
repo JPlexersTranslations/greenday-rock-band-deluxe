@@ -1,0 +1,72 @@
+(RndDir
+   (types
+      (mtv_overlay
+         (editor
+            (show
+               script
+               (script
+                  {if
+                     {exists fade.anim}
+                     {fade.anim set_frame 50}}))
+            (hide
+               script
+               (script
+                  {if
+                     {exists fade.anim}
+                     {fade.anim set_frame 0}}))
+            (play
+               script
+               (script
+                  {if
+                     {exists fade.anim}
+                     {fade.anim animate}})))
+         (enter
+            {if
+               {exists game}
+               {game
+                  add_sink
+                  $this
+                  (intro_end)}
+               {$this setup_text}
+               {if
+                  {exists fade.anim}
+                  {fade.anim set_frame 0}}})
+         (exit
+            {if
+               {exists game}
+               {game remove_sink $this}})
+         (intro_end
+            {if
+               {&&
+                  {exists game}
+                  {gamemode get show_mtv_overlay}}
+               {$this setup_text}
+               {if
+                  {exists fade.anim}
+                  {fade.anim animate}}})
+         (setup_text
+            {if
+               {exists song.lbl}
+               {do
+               ($song
+                  {meta_performer song})
+               ($song_text
+                  {song_mgr song_name $song})
+               ($artist
+                     {meta_performer song_artist})
+               {song.lbl set fixed_length 1000}
+               {if_else {!= $speedmod 1}
+				   {song.lbl set_display_text {sprint $song_text " (" {int {'+' 0.5 {'*' $speedmod 100}}} "%)" "\n" $artist}}
+               {song.lbl {sprint $song_text "\n" $artist}}}}}
+            {if
+               {exists artist.lbl}
+               {do
+                  ($artist
+                     {meta_performer song_artist})
+                  {if_else
+                     $artist
+                     {artist.lbl set_display_text $artist}
+                     {artist.lbl
+                        set
+                        text_token
+                        {artist.lbl get text_token}}}}}))))
