@@ -57,7 +57,7 @@
                {song.lbl set fixed_length 1000}
                {if_else {!= $speedmod 1}
 				   {song.lbl set_display_text {sprint $song_text " (" {int {'+' 0.5 {'*' $speedmod 100}}} "%)" "\n" $artist}}
-               {song.lbl {sprint $song_text "\n" $artist}}}}}
+               {song.lbl set_display_text {sprint $song_text "\n" $artist}}}}}
             {if
                {exists artist.lbl}
                {do
