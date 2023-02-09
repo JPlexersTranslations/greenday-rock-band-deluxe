@@ -21,5 +21,5 @@ echo:Moving back PS3 files
 rd _temp
 echo:Wrote Green Day Rock Band Deluxe patch arks.
 echo:Complete. Launching Xenia. Enjoy Green Day Rock Band Deluxe
-"%~dp0_xenia\xenia_canary" "%~dp0_build\Xbox\default.xex"
+"%~dp0_xenia\xenia_canary" "%~dp0_build\Xbox\default_xenia.xex"
 pause
