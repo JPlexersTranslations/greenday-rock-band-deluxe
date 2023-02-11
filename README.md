@@ -19,6 +19,9 @@ This Repo contains everything you need to build an ark for Green Day: Rock Band 
 * Selectable venue framerate up to 60fps
 * Manual calibration adjusts by 1ms instad of 5ms
 
+### Additional Modifications
+* Nice (69%) and Awesome Choke (98-99%) callouts on solo completion
+
 ## Install
 
 NOTE: You WILL need a modded/hacked console to play this mod on console. I hope this is clear
