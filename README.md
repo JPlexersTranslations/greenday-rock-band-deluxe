@@ -6,6 +6,18 @@
 
 This Repo contains everything you need to build an ark for Green Day: Rock Band Deluxe for Xbox 360.
 
+## Features
+
+### Quality of Life
+* No strum limit executable modification
+* Fast start executable modification
+* Additional intro skip scripting to skip the intro movie
+* Full Combo indicator per instrument via the multiplier
+* Bass streak effect from RB3/RB4 available on all instruments
+* Selectable song speed and track speed by 5% increments
+* Selectable venue framerate up to 60fps
+* Manual calibration adjusts by 1ms instad of 5ms
+
 ## Install
 
 NOTE: You WILL need a modded/hacked console to play this mod on console. I hope this is clear
