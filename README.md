@@ -12,6 +12,7 @@ This Repo contains everything you need to build an ark for Green Day: Rock Band 
 * No strum limit executable modification
 * Fast start executable modification
 * Additional intro skip scripting to skip the intro movie
+* "Overshell" - a custom on-screen menu system for changing speeds. Opened by pressing `SELECT, SELECT` on most menu screens
 * Full Combo indicator per instrument via the multiplier
 * Bass streak effect from RB3/RB4 available on all instruments
 * Selectable song speed and track speed by 5% increments
