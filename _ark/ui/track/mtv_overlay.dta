@@ -43,7 +43,9 @@
                {$this setup_text}
                {if
                   {exists fade.anim}
-                  {fade.anim animate}}})
+                  {if_else $songtitle
+                  {fade.anim set_frame 50}
+                  {fade.anim animate}}}})
          (setup_text
             {if
                {exists song.lbl}
