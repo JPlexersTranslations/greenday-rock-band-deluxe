@@ -1,3 +1,4 @@
+_ark/songs/*
 _build/xbox/gen/*.ark
 _build/xbox/gen/*.hdr
 _build/ps3/USRDIR/gen/*.hdr
@@ -15,3 +16,7 @@ _xenia/content/454108E7
 _xenia/content/454108B1
 _xenia/content/575207F0
 _build/Xbox/gen/main_xbox
+!_ark/songs/songs.dta
+!_ark/songs/songs_customs.dta
+!_ark/songs/songs_dlc.dta
+!_ark/songs/songs_dlc_updates.dta
