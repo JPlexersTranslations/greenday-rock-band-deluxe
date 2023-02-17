@@ -58,6 +58,30 @@
 ;song title always on
 {set $songtitle FALSE}
 
+;do gem custom textures
+{set $gemcustomtexture FALSE}
+
+;gem texture
+{set $gem "rb2"}
+
+;do smasher custom textures
+{set $smashercustomtexture FALSE}
+
+;smasher texture
+{set $smasher "rb2"}
+
+;do streak custom texture
+{set $streakcustomtexture FALSE}
+
+;streak texture
+{set $streak "rb2"}
+
+;do overdrive custom textures
+{set $spotlightcustomtexture FALSE}
+
+;overdrive texture
+{set $spotlight "rb2"}
+
 ;custom track scaling/angles/rotation
 ;highly experimental, don't edit unless you know what you're doing
 {set $trackangle FALSE}

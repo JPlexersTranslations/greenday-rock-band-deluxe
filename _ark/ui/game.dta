@@ -2,6 +2,29 @@
 #include pause_mics_helper.dta
 #define LOSE_MUSIC_SLOW_SEC
 (2)
+#define GAME_OUTRO_HANDLE
+(
+{if_else 
+   {'||'
+      {==
+         {{song_mgr
+               get_meta_data
+               {meta_performer song}}
+            context}
+         52}
+      {==
+         {meta_performer song_artist}
+         "Green Day"}}
+   kDataUnhandled
+   {script_task
+      kTaskSeconds
+      (delay 2)
+      (script
+      {$this game_outro_no_unhandled}
+      )
+   }
+}
+)
 {new
    GamePanel
    game
@@ -97,10 +120,6 @@
          TRUE}
       kDataUnhandled)
    (music_start
-      {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
-      {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
-	  {set $drum_groove_active FALSE}
-	  {set $guitar_groove_active FALSE}
       {ui music_start}
       kDataUnhandled)
    (beat
@@ -156,19 +175,19 @@
          {synth play track_end.cue}})
    (game_won
       {$this game_won_common}
-      kDataUnhandled)
+      GAME_OUTRO_HANDLE)
    (game_won_band0
       {$this game_won_common}
-      kDataUnhandled)
+      GAME_OUTRO_HANDLE)
    (game_won_band1
       {$this game_won_common}
-      kDataUnhandled)
+      GAME_OUTRO_HANDLE)
    (game_won_tie
       {$this game_won_common}
-      kDataUnhandled)
+      GAME_OUTRO_HANDLE)
    (game_won_finale
       {$this game_won_common}
-      kDataUnhandled)
+      GAME_OUTRO_HANDLE)
    (game_lost
       {beatmatch set_realtime TRUE}
       {beatmatch
@@ -187,7 +206,7 @@
          (script
             {do
                {beatmatch set_paused TRUE}})}
-      kDataUnhandled)
+      GAME_OUTRO_HANDLE)
    (game_outro
 	  {set $guitar_milosong FALSE} {set $bass_milosong FALSE} {set $drum_milosong FALSE}
       {set $bass_groove_active FALSE} {set $bass_firstnote FALSE} {set $guitar_firstnote FALSE} {set $drum_firstnote FALSE}
@@ -322,7 +341,7 @@
 	  {foreach $property (shake_noisefreq shake_noiseamp) {$bcs set (keyframes $i $property) {'*' {$bcs get (keyframes $i $property)} 0.25}}}
       {foreach $component (x y) {$bcs set (keyframes $i shake_maxangle $component) {'*' {$bcs get (keyframes $i shake_maxangle $component)} 0.25}}}}}}}}
 ;set all players to autoplay if the modifier is active
-      ;{if {modifier_mgr is_modifier_active mod_auto_play}  {do {beatmatch foreach_active_player $player {$player set_auto_play enable}}}}
+      ;{if {modifier_mgr is_modifier_active mod_auto_play} {do {beatmatch foreach_active_player $player {$player set_auto_play enable}}}}
 ;set for static drums
       ;{unless {modifier_mgr is_modifier_active mod_staticfills} {gamemode set allow_drum_fills FALSE}}
 ;set for freestyle drums
