@@ -1,5 +1,7 @@
+#ifdef RPCS3_DLC
 #include songs_dlc_updates.dta
 #include songs_rb1_export.dta
+#endif
 (21guns
    (name
       "21 Guns")
