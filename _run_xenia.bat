@@ -1,1 +1,1 @@
-"%~dp0\_xenia\xenia_canary" "%~dp0\_build\xbox\default_xenia.xex"
+"%~dp0\_xenia\xenia_canary" "%~dp0\_build\xbox\default.xex"
