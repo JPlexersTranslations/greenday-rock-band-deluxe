@@ -1,1 +1,0 @@
-git pull https://github.com/hmxmilohax/greenday-rock-band-deluxe main

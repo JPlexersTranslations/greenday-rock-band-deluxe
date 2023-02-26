@@ -23,3 +23,6 @@ _build/Xbox/gen/main_xbox
 !_ark/songs/songs_rb1_export.dta
 !_ark/songs/dlc
 .DS_Store
+_build/Xbox/dx-settings-loader.xex
+dependencies/dev_scripts/__pycache__
+dependencies/dev_scripts/dx-settings-loader/
