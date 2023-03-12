@@ -59,10 +59,10 @@
 {set $songtitle FALSE}
 
 ;do gem custom textures
-{set $gemcustomtexture FALSE}
+{set $gemcustomtexture TRUE}
 
 ;gem texture
-{set $gem "rb2"}
+{set $gem "rb4"}
 
 ;do smasher custom textures
 {set $smashercustomtexture FALSE}
@@ -71,16 +71,34 @@
 {set $smasher "rb2"}
 
 ;do streak custom texture
-{set $streakcustomtexture FALSE}
+{set $streakcustomtexture TRUE}
 
 ;streak texture
-{set $streak "rb2"}
+{set $streak "rb4"}
 
 ;do overdrive custom textures
-{set $spotlightcustomtexture FALSE}
+{set $spotlightcustomtexture TRUE}
 
 ;overdrive texture
-{set $spotlight "rb2"}
+{set $spotlight "rb4"}
+
+;do multiplier ring custom textures
+{set $multiringcustomtexture TRUE}
+
+;multiplier ring texture
+{set $multiring "rb2dx"}
+
+;do overdrive bar custom textures
+{set $odbarcustomtexture TRUE}
+
+;overdrive bar texture
+{set $odbar "rb2dx"}
+
+;do score custom textures
+{set $scorecustomtexture TRUE}
+
+;score texture
+{set $scoretex "rb4"}
 
 ;custom track scaling/angles/rotation
 ;highly experimental, don't edit unless you know what you're doing

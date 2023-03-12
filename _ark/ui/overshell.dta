@@ -42,7 +42,7 @@
 ((
    {if_else $blackbg os_blackbg1 os_blackbg0}
    {if_else $songtitle os_songtitle1 os_songtitle0}
-   os_gems os_smashers os_strk os_spotlight os_angle
+   os_gems os_smashers os_score os_strk os_spotlight os_odbar os_multi_ring os_angle
 ))
 {new
    MultiSelectListPanel
@@ -81,11 +81,20 @@
          (os_smashers
             {ui push_screen overshell_smashers_screen}
          )
+		 (os_score
+            {ui push_screen overshell_score_screen}
+         )
          (os_strk
             {ui push_screen overshell_streak_screen}
          )
          (os_spotlight
             {ui push_screen overshell_spotlight_screen}
+         )
+		 (os_odbar
+            {ui push_screen overshell_odbar_screen}
+         )
+         (os_multi_ring
+            {ui push_screen overshell_multiplier_ring_screen}
          )
          (os_angle
             {ui push_screen overshell_angle_screen}
@@ -181,6 +190,111 @@
    overshell_smashers_screen
    (panels overshell_smashers_panel)
    (focus overshell_smashers_panel)}
+;
+{new
+    MultiSelectListPanel
+    overshell_score_panel
+    OVERSHELL_LIST_FILE
+    (enter
+        {sel_section.lst set_data
+            (#include track/score/score.dta)}
+        {title.lbl set text_token {localize os_score}})
+    (exit)
+    (SELECT_MSG
+      {set $scorecustomtexture TRUE}
+      {set $scoretex {$component selected_sym}}
+      {ui goto_screen overshell_visual_screen}
+      {ui pop_screen}
+    )
+    (update_helpbar
+            {helpbar
+                set_config
+                ((cancel helpbar_back)
+                    (confirm helpbar_select))})
+    (SCROLL_MSG)
+    (BUTTON_DOWN_MSG
+        {if
+        {== $action kAction_Cancel}
+         {ui goto_screen overshell_visual_screen}
+         {ui pop_screen}}
+         kDataUnhandled)
+    (TRANSITION_COMPLETE_MSG
+        {$this update_helpbar})}
+{new
+   UIScreen
+   overshell_score_screen
+   (panels overshell_score_panel)
+   (focus overshell_score_panel)}
+;
+{new
+    MultiSelectListPanel
+    overshell_odbar_panel
+    OVERSHELL_LIST_FILE
+    (enter
+        {sel_section.lst set_data
+            (#include track/overdrive_bar/overdrive_bar.dta)}
+        {title.lbl set text_token {localize os_score}})
+    (exit)
+    (SELECT_MSG
+      {set $odbarcustomtexture TRUE}
+      {set $odbar {$component selected_sym}}
+      {ui goto_screen overshell_visual_screen}
+      {ui pop_screen}
+    )
+    (update_helpbar
+            {helpbar
+                set_config
+                ((cancel helpbar_back)
+                    (confirm helpbar_select))})
+    (SCROLL_MSG)
+    (BUTTON_DOWN_MSG
+        {if
+        {== $action kAction_Cancel}
+         {ui goto_screen overshell_visual_screen}
+         {ui pop_screen}}
+         kDataUnhandled)
+    (TRANSITION_COMPLETE_MSG
+        {$this update_helpbar})}
+{new
+   UIScreen
+   overshell_odbar_screen
+   (panels overshell_odbar_panel)
+   (focus overshell_odbar_panel)}
+;
+{new
+    MultiSelectListPanel
+    overshell_multiplier_ring_panel
+    OVERSHELL_LIST_FILE
+    (enter
+        {sel_section.lst set_data
+            (#include track/multiplier_ring/multiplier_ring.dta)}
+        {title.lbl set text_token {localize os_multi_ring}})
+    (exit)
+    (SELECT_MSG
+      {set $multiringcustomtexture TRUE}
+      {set $multiring {$component selected_sym}}
+      {ui goto_screen overshell_visual_screen}
+      {ui pop_screen}
+    )
+    (update_helpbar
+            {helpbar
+                set_config
+                ((cancel helpbar_back)
+                    (confirm helpbar_select))})
+    (SCROLL_MSG)
+    (BUTTON_DOWN_MSG
+        {if
+        {== $action kAction_Cancel}
+         {ui goto_screen overshell_visual_screen}
+         {ui pop_screen}}
+         kDataUnhandled)
+    (TRANSITION_COMPLETE_MSG
+        {$this update_helpbar})}
+{new
+   UIScreen
+   overshell_multiplier_ring_screen
+   (panels overshell_multiplier_ring_panel)
+   (focus overshell_multiplier_ring_panel)}
 ;
 {new
     MultiSelectListPanel

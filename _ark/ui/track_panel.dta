@@ -226,18 +226,12 @@
                 (drum {{{{get_track_panel} find guitar} find streak_meter} star_deploy})}}}
    {if $gemcustomtexture
       {{$this find prism_gems.tex} set_bitmap {sprint "ui/track/gems/prism_gems_" $gem ".png"}}
-	  {if_else {exists {sprint "ui/track/gems/prism_gem_emissive_" $gem ".png"}}
-		{do
-			{{$this find prism_gem_emissive.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_" $gem ".png"}}
-			{if_else {exists {sprint "ui/track/gems/prism_gem_emissive_3_player_" $gem ".png"}}
-				{{$this find prism_gem_emissive_3_player.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_3_player_" $gem ".png"}}
-				{{$this find prism_gem_emissive_3_player.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_" $gem ".png"}}
-			}
-		}
-		{if {exists {sprint "ui/track/gems/prism_gem_emissive_3_player_" $gem ".png"}}
-			{{$this find prism_gem_emissive.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_3_player_" $gem ".png"}}
-		}
-	  }
+	  {{$this find prism_gem_emissive.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_" $gem ".png"}}
+	  {{$this find prism_gem_emissive_3_player.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_3_player_" $gem ".png"}}
+	  {{$this find prism_gem_emissive_dynamic.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_dynamic_" $gem ".png"}}
+	  {{$this find prism_gem_emissive_dynamic_red.tex} set_bitmap {sprint "ui/track/gems/prism_gem_emissive_dynamic_red_" $gem ".png"}}
+	  {{$this find prism_green.tex} set_bitmap {sprint "ui/track/gems/prism_green_" $gem ".png"}}
+	  {{$this find prism_red.tex} set_bitmap {sprint "ui/track/gems/prism_red_" $gem ".png"}}
    }
 
    {if $smashercustomtexture
@@ -255,11 +249,38 @@
       {{$this find square_smasher_bright_orange.tex} set_bitmap {sprint "ui/track/smashers/square_smasher_bright_orange_" $smasher ".png"}}
       {{$this find square_smasher_bright_red.tex} set_bitmap {sprint "ui/track/smashers/square_smasher_bright_red_" $smasher ".png"}}
       {{$this find square_smasher_bright_yellow.tex} set_bitmap {sprint "ui/track/smashers/square_smasher_bright_yellow_" $smasher ".png"}}
+	  {{$this find radial_shockwave.tex} set_bitmap {sprint "ui/track/smashers/radial_shockwave_" $smasher ".png"}}
+	  {{$this find radial_shockwave_subtract.tex} set_bitmap {sprint "ui/track/smashers/radial_shockwave_subtract_" $smasher ".png"}}
+	  {{$this find shockwave.tex} set_bitmap {sprint "ui/track/smashers/shockwave_" $smasher ".png"}}
    }
    }
+
+   {if $scorecustomtexture
+      {{$this find indv_player_meter_circle.tex} set_bitmap {sprint "ui/track/score/indv_player_meter_circle_" $scoretex ".png"}}
+      {{$this find indv_player_meter_glass.tex} set_bitmap {sprint "ui/track/score/indv_player_meter_glass_" $scoretex ".png"}}
+	  {{$this find indv_player_meter_glow.tex} set_bitmap {sprint "ui/track/score/indv_player_meter_glow_" $scoretex ".png"}}
+	  {{$this find indv_player_meter.png} set_bitmap {sprint "ui/track/score/indv_player_meter_" $scoretex ".png"}}
+	  {{$this find star_sheet.tex} set_bitmap {sprint "ui/track/score/star_power_" $scoretex ".png"}}
+	  {{$this find score_meter_wipe.tex} set_bitmap {sprint "ui/track/score/score_meter_wipe_" $scoretex ".png"}}
+   }
+
+   {if $odbarcustomtexture
+      {{$this find rb2_player_meter_background.tex} set_bitmap {sprint "ui/track/overdrive_bar/player_meter_background_" $odbar ".png"}}
+      {{$this find player_meter_long.tex} set_bitmap {sprint "ui/track/overdrive_bar/player_meter_long_" $odbar ".png"}}
+	  {{$this find rising_sun_fx_small.tex} set_bitmap {sprint "ui/track/overdrive_bar/rising_sun_fx_small_" $odbar ".png"}}
+   }
+
+   {if $multiringcustomtexture
+      {{$this find multiplier_cap_glass_vox.tex} set_bitmap {sprint "ui/track/multiplier_ring/multiplier_cap_glass_vox_" $multiring ".png"}}
+      {{$this find multiplier_meter_glow.tex} set_bitmap {sprint "ui/track/multiplier_ring/multiplier_meter_glow_" $multiring ".png"}}
+      {{$this find multiplier_meter.tex} set_bitmap {sprint "ui/track/multiplier_ring/multiplier_meter_" $multiring ".png"}}
+      {{$this find multiplier_meter_solid..tex} set_bitmap {sprint "ui/track/multiplier_ring/multiplier_meter_solid_" $multiring ".png"}}
+   }
+
    {if $streakcustomtexture
       {{$this find bass_superstreak_pattern.tex} set_bitmap {sprint "ui/track/streak/" $streak ".png"}}
    }
+
    {if $spotlightcustomtexture
       {{$this find spotlight_bass_track.tex} set_bitmap {sprint "ui/track/spotlight/" $spotlight ".png"}}
       {{$this find spotlight_guitar_track.tex} set_bitmap {sprint "ui/track/spotlight/" $spotlight ".png"}}
