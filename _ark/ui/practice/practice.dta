@@ -559,7 +559,10 @@
          {if
             {== $action kAction_Left}
             {$this dec_speed}
-            {dpad_left.trig trigger}}})
+            {dpad_left.trig trigger}}}
+         {if
+            {&& {== $raw_button kPad_Select} {gamemode get is_practice}}
+            {session end_game kRestart}})
    (inc_speed
       {set
          $p_speed
