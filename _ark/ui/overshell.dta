@@ -45,6 +45,7 @@
 ((
    {if_else $blackbg os_blackbg1 os_blackbg0}
    {if_else $songtitle os_songtitle1 os_songtitle0}
+   {if_else $postfx os_postfx1 os_postfx0}
 ))
 {new
    MultiSelectListPanel
@@ -76,6 +77,18 @@
             {set $blackbg {! $blackbg}}
             {set $modifierpos {sel_section.lst selected_sym}}
             {$this lst_reset}
+		 )
+		 (os_postfx1
+            {set $postfx {! $postfx}}
+            {set $modifierpos {sel_section.lst selected_sym}}
+            {$this lst_reset}
+			{rnd toggle_all_postprocs}
+         )
+         (os_postfx0
+            {set $postfx {! $postfx}}
+            {set $modifierpos {sel_section.lst selected_sym}}
+            {$this lst_reset}
+			{rnd toggle_all_postprocs}
 		 )
       }
    )

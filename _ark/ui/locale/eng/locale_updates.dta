@@ -26,6 +26,8 @@
 (os_songtitle1 "Song Title Always: ON")
 (os_blackbg0 "Black Background: OFF")
 (os_songtitle0 "Song Title Always: OFF")
+(os_postfx1 "Disable Post FX: ON")
+(os_postfx0 "Disable Post FX: OFF")
 ;track settings
 (rb1 "Rock Band 1")
 (rb2 "Rock Band 2")
