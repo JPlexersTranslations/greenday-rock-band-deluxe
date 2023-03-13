@@ -6,17 +6,20 @@
    overshell_main_panel
    OVERSHELL_LIST_FILE
    (enter
-      {sel_section.lst set_data (os_spd os_vis)}
+      {sel_section.lst set_data (os_mod os_trk os_spd)}
       {title.lbl set text_token os_dxsettings}
       {$this pause_if_local})
    (exit)
    (SELECT_MSG
       {switch {$component selected_sym}
+	     (os_mod
+            {ui push_screen overshell_modifier_screen}
+         )
+         (os_trk
+            {ui push_screen overshell_trk_screen}
+         )
          (os_spd
             {ui push_screen options_milo_screen}
-         )
-         (os_vis
-            {ui push_screen overshell_visual_screen}
          )
       }
    )
@@ -38,43 +41,79 @@
    (panels overshell_main_panel)
    (focus overshell_main_panel)}
 ;
-#define VIS_MODIFIER_DATA
+#define MODIFIER_DATA
 ((
    {if_else $blackbg os_blackbg1 os_blackbg0}
    {if_else $songtitle os_songtitle1 os_songtitle0}
-   os_gems os_smashers os_score os_strk os_spotlight os_odbar os_multi_ring os_angle
 ))
 {new
    MultiSelectListPanel
-   overshell_visual_panel
+   overshell_modifier_panel
    OVERSHELL_LIST_FILE
    (enter
       {$this lst_reset}
-      {title.lbl set text_token {localize os_vis}}
+      {title.lbl set text_token {localize os_mod}}
       {$this pause_if_local})
    (exit)
    (SELECT_MSG
       {switch {$component selected_sym}
          (os_songtitle1
             {set $songtitle {! $songtitle}}
-            {set $vismodifierpos {sel_section.lst selected_sym}}
+            {set $modifierpos {sel_section.lst selected_sym}}
             {$this lst_reset}
          )
          (os_songtitle0
             {set $songtitle {! $songtitle}}
-            {set $vismodifierpos {sel_section.lst selected_sym}}
+            {set $modifierpos {sel_section.lst selected_sym}}
             {$this lst_reset}
          )
          (os_blackbg1
             {set $blackbg {! $blackbg}}
-            {set $vismodifierpos {sel_section.lst selected_sym}}
+            {set $modifierpos {sel_section.lst selected_sym}}
             {$this lst_reset}
          )
          (os_blackbg0
             {set $blackbg {! $blackbg}}
-            {set $vismodifierpos {sel_section.lst selected_sym}}
+            {set $modifierpos {sel_section.lst selected_sym}}
             {$this lst_reset}
-         )
+		 )
+      }
+   )
+   (lst_reset
+      {sel_section.lst set_data MODIFIER_DATA}
+   {if $modifierpos
+      {sel_section.lst set_selected $modifierpos}
+   })
+   (SCROLL_MSG)
+   (BUTTON_DOWN_MSG
+      {if {== $action kAction_Cancel}
+         {ui goto_screen overshell_main_screen}
+         {ui pop_screen}
+         {set $modifierpos 0}
+      }
+      kDataUnhandled
+      )}
+{new
+   UIScreen
+   overshell_modifier_screen
+   (panels overshell_modifier_panel)
+   (focus overshell_modifier_panel)}
+;
+#define TRK_MODIFIER_DATA
+((
+   os_gems os_smashers os_score os_odbar os_multi_ring os_strk os_spotlight os_angle
+))
+{new
+   MultiSelectListPanel
+   overshell_trk_panel
+   OVERSHELL_LIST_FILE
+   (enter
+      {$this lst_reset}
+      {title.lbl set text_token {localize os_trk}}
+      {$this pause_if_local})
+   (exit)
+   (SELECT_MSG
+      {switch {$component selected_sym}
          (os_gems
             {ui push_screen overshell_gems_screen}
          )
@@ -102,24 +141,24 @@
       }
    )
    (lst_reset
-      {sel_section.lst set_data VIS_MODIFIER_DATA}
-   {if $vismodifierpos
-      {sel_section.lst set_selected $vismodifierpos}
+      {sel_section.lst set_data TRK_MODIFIER_DATA}
+   {if $trkmodifierpos
+      {sel_section.lst set_selected $trkmodifierpos}
    })
    (SCROLL_MSG)
    (BUTTON_DOWN_MSG
       {if {== $action kAction_Cancel}
          {ui goto_screen overshell_main_screen}
          {ui pop_screen}
-         {set $vismodifierpos 0}
+         {set $trkmodifierpos 0}
       }
       kDataUnhandled
       )}
 {new
    UIScreen
-   overshell_visual_screen
-   (panels overshell_visual_panel)
-   (focus overshell_visual_panel)}
+   overshell_trk_screen
+   (panels overshell_trk_panel)
+   (focus overshell_trk_panel)}
 ;
 {new
     MultiSelectListPanel
@@ -133,7 +172,7 @@
     (SELECT_MSG
       {set $gemcustomtexture TRUE}
       {set $gem {$component selected_sym}}
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -145,7 +184,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
@@ -168,7 +207,7 @@
     (SELECT_MSG
       {set $smashercustomtexture TRUE}
       {set $smasher {$component selected_sym}}
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -180,7 +219,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
@@ -203,7 +242,7 @@
     (SELECT_MSG
       {set $scorecustomtexture TRUE}
       {set $scoretex {$component selected_sym}}
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -215,7 +254,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
@@ -238,7 +277,7 @@
     (SELECT_MSG
       {set $odbarcustomtexture TRUE}
       {set $odbar {$component selected_sym}}
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -250,7 +289,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
@@ -273,7 +312,7 @@
     (SELECT_MSG
       {set $multiringcustomtexture TRUE}
       {set $multiring {$component selected_sym}}
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -285,7 +324,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
@@ -308,7 +347,7 @@
     (SELECT_MSG
       {set $streakcustomtexture TRUE}
       {set $streak {$component selected_sym}}
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -320,7 +359,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
@@ -343,7 +382,7 @@
     (SELECT_MSG
       {set $spotlightcustomtexture TRUE}
       {set $spotlight {$component selected_sym}}
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -355,7 +394,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
@@ -408,7 +447,7 @@
       {set $track_fade_length 30}
       )
       }
-      {ui goto_screen overshell_visual_screen}
+      {ui goto_screen overshell_trk_screen}
       {ui pop_screen}
     )
     (update_helpbar
@@ -420,7 +459,7 @@
     (BUTTON_DOWN_MSG
         {if
         {== $action kAction_Cancel}
-         {ui goto_screen overshell_visual_screen}
+         {ui goto_screen overshell_trk_screen}
          {ui pop_screen}}
          kDataUnhandled)
     (TRANSITION_COMPLETE_MSG
