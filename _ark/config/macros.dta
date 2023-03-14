@@ -1,4 +1,4 @@
-;#define RPCS3_DLC (1) ;remove the ; at the start to allow all dlc to run (rpcs3 only, crashes 360 and ps3 hardware)
+;#define LOCK_DLC (1) ;remove the ; at the start to only show green day dlc and on disc songs
 #define INIT_BAND
 (1)
 #include sfx_macros.dta
