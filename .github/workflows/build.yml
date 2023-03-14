@@ -64,7 +64,7 @@ jobs:
           name: GDRBDX-Xbox-vanilla-songs
           path: _build/xbox
 
-  build_ps3:
+  build_ps3_vanilla_songs:
     runs-on: ubuntu-latest
 
     steps:
