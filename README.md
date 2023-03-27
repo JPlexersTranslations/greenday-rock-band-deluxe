@@ -81,7 +81,7 @@ This guide contains full instructions on how to install Green Day: Rock Band Del
   * Remember, **you need to be running** ***BLUS30350***. RPCS3 will tell you this in the game selection GUI under the `Serial` column.
 
 * Download [**Green Day: Rock Band Deluxe for PS3**](#playstation-3). 
-  * Extract the zip and **copy the contents to where your vanilla copy of Green Day: Rock Band is installed**. Select `Yes` to overwrite the files if asked.
+  * Extract the zip and **copy the contents to the `PS3_GAME` folder on your vanilla copy of Green Day: Rock Band**. Select `Yes` to overwrite the files if asked.
 
 ***Green Day: Rock Band Deluxe is now installed!*** We highly recommend you check out [**Optional Upgrades**](#optional-upgrades) for songs and other cool stuff you can add to your game.
 
@@ -108,7 +108,7 @@ This guide contains full instructions on how to install Green Day: Rock Band Del
 
 * Download [**Green Day: Rock Band Deluxe for PS3**](#playstation-3). 
   * Extract the zip and **copy the contents to where your vanilla copy of Green Day: Rock Band is installed** (we recommend using FTP to do so).
-    * If you used MultiMan to dump your game, it should be in `dev_hdd0\GAMES\BLUS30350-[Green Day Rock Band]`.
+    * If you used MultiMan to dump your game, it should be in `\dev_hdd0\GAMES\BLUS30350-[Green Day Rock Band]\PS3_GAME\`.
   * Select `Yes` to overwrite the files if asked.
 
 ***Green Day: Rock Band Deluxe is now installed!*** We highly recommend you check out [**Optional Upgrades**](#optional-upgrades) for songs and other cool stuff you can add to your game.
