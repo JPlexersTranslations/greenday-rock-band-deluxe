@@ -15,6 +15,12 @@ _xenia/recent.toml
 _xenia/content/454108E7
 _xenia/content/454108B1
 _xenia/content/575207F0
+_xenia/x360ce.ini
+_xenia/xinput1_1.dll
+_xenia/xinput1_2.dll
+_xenia/xinput1_3.dll
+_xenia/xinput1_4.dll
+_xenia/xinput9_1_0.dll
 _build/Xbox/gen/main_xbox
 !_ark/songs/songs.dta
 !_ark/songs/songs_customs.dta
