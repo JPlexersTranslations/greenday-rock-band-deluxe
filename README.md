@@ -11,7 +11,6 @@ This guide contains full instructions on how to install Green Day: Rock Band Del
 # Table of Contents  
 - [Features](#features)
   - [Quality of Life](#quality-of-life)
-  - [Authoring](#authoring)
   - [Additional Modifications](#additional-modifications)
 - [What You'll Need](#what-youll-need)
 - [Downloads](#downloads)
@@ -63,7 +62,7 @@ This guide contains full instructions on how to install Green Day: Rock Band Del
 
 [GDRBDX (Vanilla Songs Only) for PS3](https://nightly.link/hmxmilohax/greenday-rock-band-deluxe/workflows/build/main/GDRBDX-PS3-vanilla-songs.zip)
 
-*NOTE: Green Day: Rock Band Deluxe on PS3/RPCS3 installs slightly differently compared to the other Deluxe projects.*
+*NOTE: Green Day: Rock Band Deluxe on PS3/RPCS3 installs differently compared to the other Deluxe projects.*
 
 ## Xbox 360
 
@@ -75,7 +74,7 @@ This guide contains full instructions on how to install Green Day: Rock Band Del
 
 ## Installing on [RPCS3](https://rpcs3.net/) (Recommended for PC)
 
-*NOTE: Green Day: Rock Band Deluxe on PS3/RPCS3 installs slightly differently compared to the other Deluxe projects.*
+*NOTE: Green Day: Rock Band Deluxe on PS3/RPCS3 installs differently compared to the other Deluxe projects.*
 
 * **Install your North American copy of Green Day: Rock Band** through the emulator. The [**official RPCS3 site covers this nicely**](https://rpcs3.net/quickstart).
   * Remember, **you need to be running** ***BLUS30350***. RPCS3 will tell you this in the game selection GUI under the `Serial` column.
@@ -101,7 +100,7 @@ This guide contains full instructions on how to install Green Day: Rock Band Del
 
 **NOTE: Green Day: Rock Band Deluxe only works with** ***North American (`BLUS30350`)*** **copies of the game on PS3.**
 
-*NOTE: Green Day: Rock Band Deluxe on PS3/RPCS3 installs slightly differently compared to the other Deluxe projects.*
+*NOTE: Green Day: Rock Band Deluxe on PS3/RPCS3 installs differently compared to the other Deluxe projects.*
 
 * **Dump or extract your North American copy of Green Day: Rock Band** to your PS3's hard drive.
   * Remember, **you need to be running** ***BLUS30350***.
