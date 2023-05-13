@@ -58,6 +58,12 @@
 ;song title always on
 {set $songtitle FALSE}
 
+;show artist text
+{set $showartist FALSE}
+
+;force show artist text for non-gd songs ONLY
+{set $forceartist TRUE}
+
 ;do gem custom textures
 {set $gemcustomtexture TRUE}
 

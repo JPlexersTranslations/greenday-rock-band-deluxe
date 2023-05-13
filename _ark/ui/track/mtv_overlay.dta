@@ -55,8 +55,18 @@
                ($song_text
                   {song_mgr song_name $song})
                ($artist
-                     {meta_performer song_artist})
+                     {sprint "\n" {meta_performer song_artist}})
+               {if 
+                  {||
+                     ; disables artist line if the artist is green day and only show non-gd artists modifier is on
+                     ; show all artists modifier takes priority and will keep the artist line
+                     {&& {== {meta_performer song_artist} "Green Day"} $forceartist {! $showartist}}
+                     ; disables artist line if both show all artists and only show non-gd artists modifiers are off
+                     {&& {! $forceartist} {! $showartist}}
+                  }
+                  {set $artist ""}  
+               }
                {song.lbl set fixed_length 1000}
                {if_else {!= $speedmod 1}
-				   {song.lbl set_display_text {sprint $song_text " (" {int {'+' 0.5 {'*' $speedmod 100}}} "%)" "\n" $artist}}
-               {song.lbl set_display_text {sprint $song_text "\n" $artist}}}}}))))
+				   {song.lbl set_display_text {sprint $song_text " (" {int {'+' 0.5 {'*' $speedmod 100}}} "%)" $artist}}
+               {song.lbl set_display_text {sprint $song_text $artist}}}}}))))

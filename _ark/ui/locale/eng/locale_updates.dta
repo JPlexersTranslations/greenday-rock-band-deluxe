@@ -23,9 +23,13 @@
 (os_multi_ring "Multiplier Ring")
 (os_angle "Track Angle")
 (os_blackbg1 "Black Background: ON")
-(os_songtitle1 "Song Title Always: ON")
 (os_blackbg0 "Black Background: OFF")
+(os_songtitle1 "Song Title Always: ON")
 (os_songtitle0 "Song Title Always: OFF")
+(os_artist1 "Show All Artists: ON") ; these might need to be changed
+(os_artist0 "Show All Artists: OFF") ; not sure if they are clear enough
+(os_forceartist1 "Only Show Non-GD Artists: ON") ; /shrug
+(os_forceartist0 "Only Show Non-GD Artists: OFF") ; - LysiX
 (os_postfx1 "Disable Post FX: ON")
 (os_postfx0 "Disable Post FX: OFF")
 ;track settings

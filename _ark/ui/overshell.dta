@@ -45,6 +45,8 @@
 ((
    {if_else $blackbg os_blackbg1 os_blackbg0}
    {if_else $songtitle os_songtitle1 os_songtitle0}
+   {if_else $showartist os_artist1 os_artist0}
+   {if_else $forceartist os_forceartist1 os_forceartist0}
    {if_else $postfx os_postfx1 os_postfx0}
 ))
 {new
@@ -65,6 +67,26 @@
          )
          (os_songtitle0
             {set $songtitle {! $songtitle}}
+            {set $modifierpos {sel_section.lst selected_sym}}
+            {$this lst_reset}
+         )
+         (os_forceartist1
+            {set $forceartist {! $forceartist}}
+            {set $modifierpos {sel_section.lst selected_sym}}
+            {$this lst_reset}
+         )
+         (os_forceartist0
+            {set $forceartist {! $forceartist}}
+            {set $modifierpos {sel_section.lst selected_sym}}
+            {$this lst_reset}
+         )
+         (os_artist1
+            {set $showartist {! $showartist}}
+            {set $modifierpos {sel_section.lst selected_sym}}
+            {$this lst_reset}
+         )
+         (os_artist0
+            {set $showartist {! $showartist}}
             {set $modifierpos {sel_section.lst selected_sym}}
             {$this lst_reset}
          )
