@@ -15,6 +15,7 @@
    (is_loaded
       {content_mgr refresh_done})
    (enter
+      {set $iamingamenow FALSE}
       {platform_mgr add_sink $this}
       {server
          add_sink

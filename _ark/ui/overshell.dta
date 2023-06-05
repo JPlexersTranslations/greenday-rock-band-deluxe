@@ -531,6 +531,8 @@
       {audio_options.lbl set text_token milosliderlbl}
       {karaoke.btn set_showing FALSE}
       {$this disable karaoke.btn}
+     {if $iamingamenow
+         {$this disable crowd.btn}}
 	  {$this update_all_from_profile}
       {memcardmgr
          add_sink

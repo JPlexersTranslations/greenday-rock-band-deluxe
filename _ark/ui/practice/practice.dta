@@ -64,6 +64,7 @@
    (initial_section 0)
    (selected_first_section 0)
    (enter
+      {set $iamingamenow FALSE}
       {gamecfg set_section 0 -1}
       {gamecfg set_section 1 -1}
       {sel_section.lst set_provider practice_section_provider}
@@ -263,6 +264,7 @@
          (speed3.btn
             {gamecfg set practice_speed 6})}
       {gamecfg set_active_roster TRUE}
+      {set $iamingamenow TRUE}
       {ui goto_screen practice_loading_screen})}
 {new
    BandScreen
