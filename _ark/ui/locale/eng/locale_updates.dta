@@ -11,6 +11,7 @@
 (nice_solo
    "Nice")
 (os_dxsettings "DELUXE SETTINGS")
+(os_write "[SAVE SETTINGS]")
 (os_spd "Set Speeds")
 (os_mod "Modifiers")
 (os_trk "Track Options")
@@ -37,6 +38,7 @@
 (rb2 "Rock Band 2")
 (rb3 "Rock Band 3")
 (rb4 "Rock Band 4")
+(rr "Rock Revolution")
 (rb2dx "GDRB:DX")
 (lrb "LEGO Rock Band")
 (tbrb "Beatles Rock Band")

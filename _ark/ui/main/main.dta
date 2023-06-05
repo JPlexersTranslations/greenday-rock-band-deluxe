@@ -1,3 +1,60 @@
+#define INIT_DTA_WRITER
+(
+   {write_file #ifdef HX_XBOX "GAME:/dx.dta" #endif #ifdef HX_PS3 "GD:/dev_hdd0/game/BLUS30282/USRDIR/dx.dta" #endif
+      {array
+        (
+            (disable_post_fx
+               (disable_post_fx $postfx)
+            )
+            (track_speed
+               (track_speed $trackspeed)
+            )
+            (song_speed
+               (song_speed $speedmod)
+            )
+            (emulate_fps
+               (emulate_fps $emulatefps)
+            )
+            (black_bg
+               (black_bg $blackbg)
+            )
+            (song_title_always
+               (song_title_always $songtitle)
+            )
+            (show_artist
+               (show_artist $showartist)
+            )
+            (non_gd_artists
+               (non_gd_artists $forceartist)
+            )
+            (gem_texture
+               (gem_texture $gem)
+            )
+            (smasher_texture
+               (smasher_texture $smasher)
+            )
+            (streak_texture
+               (streak_texture_gd $streak)
+            )
+            (spotlight_texture
+               (spotlight_texture_gd $spotlight)
+            )
+            (multiring_texture
+               (multiring_texture $multiring)
+            )
+            (odbar_texture
+               (odbar_texture $odbar)
+            )
+            (score_texture
+               (score_texture $scoretex)
+            )
+            (angle_preset
+               (angle_preset $anglepreset)
+            )
+         )
+      }
+   }
+)
 {new
    UIPanel
    main_panel

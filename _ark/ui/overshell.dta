@@ -6,13 +6,15 @@
    overshell_main_panel
    OVERSHELL_LIST_FILE
    (enter
-      {sel_section.lst set_data (os_mod os_trk os_spd)}
+      {sel_section.lst set_data (os_write os_mod os_trk os_spd)}
       {title.lbl set text_token os_dxsettings}
       {$this pause_if_local})
    (exit)
    (SELECT_MSG
       {switch {$component selected_sym}
-	     (os_mod
+         (os_write
+            {do INIT_DTA_WRITER})
+	      (os_mod
             {ui push_screen overshell_modifier_screen}
          )
          (os_trk
@@ -446,15 +448,17 @@
     OVERSHELL_LIST_FILE
     (enter
         {sel_section.lst set_data
-            (gdrb rb2 rb3 rb4)}
+            (gdrb rb2 rb4 rr)}
         {title.lbl set text_token {localize os_angle}})
     (exit)
     (SELECT_MSG
       {switch {$component selected_sym}
       (gdrb
+      {set $anglepreset gdrb}
       {set $trackangle FALSE}
       )
       (rb2
+      {set $anglepreset rb2}
       {set $trackangle TRUE}
       {set $track_pitch -44.5}
       {set $track_fov 21.0515995025635}
@@ -463,16 +467,8 @@
       {set $track_fade_start 60}
       {set $track_fade_length 40}
       )
-      (rb3
-      {set $trackangle TRUE}
-      {set $track_pitch -41}
-      {set $track_fov 19}
-      {set $track_y_pos -100}
-      {set $track_z_pos 22}
-      {set $track_fade_start 70}
-      {set $track_fade_length 50}
-      )
       (rb4
+      {set $anglepreset rb4}
       {set $trackangle TRUE}
       {set $track_pitch -40.5}
       {set $track_fov 21}
@@ -480,6 +476,16 @@
       {set $track_z_pos 26.51}
       {set $track_fade_start 90}
       {set $track_fade_length 30}
+      )
+      (rr
+      {set $anglepreset rr}
+      {set $trackangle TRUE}
+      {set $track_pitch -90}
+      {set $track_fov 19}
+      {set $track_y_pos -165}
+      {set $track_z_pos 36}
+      {set $track_fade_start 15}
+      {set $track_fade_length 45}
       )
       }
       {ui goto_screen overshell_trk_screen}

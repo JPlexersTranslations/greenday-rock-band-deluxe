@@ -1,0 +1,32 @@
+{switch $anglepreset
+   ("gdrb"
+      {set $trackangle FALSE}
+   )
+   ("rb2"
+      {set $trackangle TRUE}
+      {set $track_pitch -44.5}
+      {set $track_fov 21.0515995025635}
+      {set $track_y_pos -83.5}
+      {set $track_z_pos 18.5}
+      {set $track_fade_start 60}
+      {set $track_fade_length 40}
+   )
+   ("rb4"
+      {set $trackangle TRUE}
+      {set $track_pitch -40.15}
+      {set $track_fov 21}
+      {set $track_y_pos -112}
+      {set $track_z_pos 26.25}
+      {set $track_fade_start 130}
+      {set $track_fade_length 15}
+   )
+   ("rr"
+      {set $trackangle TRUE}
+      {set $track_pitch -90}
+      {set $track_fov 19}
+      {set $track_y_pos -165}
+      {set $track_z_pos 36}
+      {set $track_fade_start 15}
+      {set $track_fade_length 45}
+   )
+}

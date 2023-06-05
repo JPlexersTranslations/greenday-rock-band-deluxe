@@ -64,51 +64,39 @@
 ;force show artist text for non-gd songs ONLY
 {set $forceartist TRUE}
 
-;do gem custom textures
-{set $gemcustomtexture TRUE}
-
 ;gem texture
 {set $gem "rb2dx"}
 
-;do smasher custom textures
-{set $smashercustomtexture FALSE}
-
 ;smasher texture
-{set $smasher "rb2"}
-
-;do streak custom texture
-{set $streakcustomtexture TRUE}
+{set $smasher "none"}
 
 ;streak texture
 {set $streak "rb4"}
 
-;do overdrive custom textures
-{set $spotlightcustomtexture TRUE}
-
 ;overdrive texture
 {set $spotlight "rb4"}
-
-;do multiplier ring custom textures
-{set $multiringcustomtexture TRUE}
 
 ;multiplier ring texture
 {set $multiring "rb2dx"}
 
-;do overdrive bar custom textures
-{set $odbarcustomtexture TRUE}
-
 ;overdrive bar texture
 {set $odbar "rb2dx"}
-
-;do score custom textures
-{set $scorecustomtexture TRUE}
 
 ;score texture
 {set $scoretex "rb4"}
 
+;disable post fx
+{set $postfx FALSE}
+
 ;custom track scaling/angles/rotation
 ;highly experimental, don't edit unless you know what you're doing
 {set $trackangle FALSE}
+
+;track angle presets that closely match the source games
+;available options: "gdrb", "rb2", "rb4", "rr" "none"
+{set $anglepreset "gdrb"}
+;set to "none" if you want to manually edit the numbers below
+
 ;the default angles set here is rb2's
 {set $track_pitch -44.5} ;camera pitch
 {set $track_fov 21.0515995025635} ;field of view of the track camera
@@ -120,3 +108,113 @@
 {platform_mgr set_notify_ui_location kOSNotifyBottomCenter}
 {set $saveload_skip_upload FALSE}
 #endif
+
+;DEVELOPER SETTINGS BELOW, DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING!!
+
+#define INIT_DTA_READER
+(
+   {foreach $entry {read_file #ifdef HX_XBOX "GAME:/dx_gd.dta" #endif #ifdef HX_PS3 "GD:/dev_hdd0/game/BLUS30282/USRDIR/dx_gd.dta" #endif}
+      {if {== {elem $entry 0} {basename disable_post_fx}}
+         {set $postfx
+            {elem {find $entry disable_post_fx} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename track_speed}}
+         {set $trackspeed
+            {elem {find $entry track_speed} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename song_speed}}
+         {set $speedmod
+            {elem {find $entry song_speed} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename emulate_fps}}
+         {set $emulatefps
+            {elem {find $entry emulate_fps} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename black_bg}}
+         {set $blackbg
+            {elem {find $entry black_bg} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename song_title_always}}
+         {set $songtitle
+            {elem {find $entry song_title_always} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename show_artist}}
+         {set $showartist
+            {elem {find $entry show_artist} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename non_gd_artists}}
+         {set $forceartist
+            {elem {find $entry non_gd_artists} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename gem_texture}}
+         {set $gem
+            {elem {find $entry gem_texture} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename smasher_texture}}
+         {set $smasher
+            {elem {find $entry smasher_texture} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename streak_texture}}
+         {set $streak
+            {elem {find $entry streak_texture} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename spotlight_texture}}
+         {set $spotlight
+            {elem {find $entry spotlight_texture} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename multiring_texture}}
+         {set $multiring
+            {elem {find $entry multiring_texture} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename odbar_texture}}
+         {set $odbar
+            {elem {find $entry odbar_texture} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename score_texture}}
+         {set $scoretex
+            {elem {find $entry score_texture} 1}
+         }
+      }
+      {if {== {elem $entry 0} {basename angle_preset}}
+         {set $anglepreset
+            {elem {find $entry angle_preset} 1}
+         }
+      }
+   }
+)
+;{unless {file_exists dx.dta} INIT_DTA_WRITER}
+{if {file_exists #ifdef HX_XBOX "GAME:/dx_gd.dta" #endif #ifdef HX_PS3 "GD:/dev_hdd0/game/BLUS30282/USRDIR/dx_gd.dta" #endif} INIT_DTA_READER}
+
+;modifier funcs
+{if $postfx
+   {rnd toggle_all_postprocs}}
+
+{unless {== $gem none} {set $gemcustomtexture TRUE}}
+
+{unless {== $smasher none} {set $smashercustomtexture TRUE}}
+
+{unless {== $spotlight none} {set $spotlightcustomtexture TRUE}}
+
+{unless {== $streak none} {set $streakcustomtexture TRUE}}
+
+{unless {== $multiring none} {set $multiringcustomtexture TRUE}}
+
+{unless {== $odbar none} {set $odbarcustomtexture TRUE}}
+
+{unless {== $scoretex none} {set $scorecustomtexture TRUE}}
+
+#include init_dev.dta
