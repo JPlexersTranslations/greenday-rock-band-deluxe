@@ -297,6 +297,15 @@
       }
    }
    
+;after all of the queued texture updates are completed, set them to false so they do not run again until a new texture is queued via overshell
+{set $gemcustomtexture FALSE}
+{set $smashercustomtexture FALSE}
+{set $scorecustomtexture FALSE}
+{set $odbarcustomtexture FALSE}
+{set $multiringcustomtexture FALSE}
+{set $streakcustomtexture FALSE}
+{set $spotlightcustomtexture FALSE}
+   
       {$this play_intro}
       {if
          {&&
