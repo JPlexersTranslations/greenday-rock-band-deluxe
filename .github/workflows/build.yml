@@ -15,7 +15,7 @@ jobs:
           chmod +x dependencies/linux/dtab
           chmod +x dependencies/linux/superfreq
           find . -name "*.*_ps3" -type f -delete
-          dependencies/linux/arkhelper dir2ark ./_ark ./_build/xbox/gen -n "patch_xbox" -e -v 5
+          dependencies/linux/arkhelper dir2ark ./_ark ./_build/Xbox/gen -n "patch_xbox" -e -v 5
       - name: Remove Excess files
         run: |
           find . -name "*.txt" -type f -delete
@@ -60,7 +60,7 @@ jobs:
           chmod +x dependencies/linux/superfreq
           find . -name "*.*_ps3" -type f -delete
           sed -i -e "s/;#define LOCK_DLC (1)/#define LOCK_DLC (1)/" _ark/config/macros.dta
-          dependencies/linux/arkhelper dir2ark ./_ark ./_build/xbox/gen -n "patch_xbox" -e -v 5
+          dependencies/linux/arkhelper dir2ark ./_ark ./_build/Xbox/gen -n "patch_xbox" -e -v 5
       - name: Remove Excess files
         run: |
           find . -name "*.txt" -type f -delete
