@@ -1,6 +1,6 @@
 # Green Day: Rock Band Deluxe
 
-![Header Image](dependencies/header.png)
+![Header Image](dependencies/images/header.png)
 
 # Introduction
 
